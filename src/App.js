@@ -19,7 +19,17 @@ function App() {
   }, [])
 
   async function handleAddRepository() {
-    // TODO
+
+    const response = await api.post('repositories', {
+      title: `Anywere ${Date.now()}`,
+      url: "https://github.com/nailtonoliveira/appgobarber",
+      techs: [
+        "Typescript",
+        "React Native"
+      ]
+    });
+
+    setRepositories([...repositories, response.data]);
   }
 
   async function handleRemoveRepository(id) {
